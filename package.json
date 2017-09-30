@@ -1,7 +1,7 @@
 {
   "name": "webpack-react-redux",
   "version": "1.0.0",
-  "description": "A boilerplate for playing around with react, redux and react-router with the help of webpack.",
+  "description": "An app written in react redux with the help of webpack for evaluate currency fluctuation.",
   "main": "index.js",
   "scripts": {
     "test": "",
