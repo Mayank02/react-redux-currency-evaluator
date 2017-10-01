@@ -5,16 +5,14 @@ import {Route} from 'react-router-dom';
 import {ConnectedRouter} from 'react-router-redux';
 
 import App from '../components/App';
-import DevTools from './DevTools';
 
 export default function Root({store, history}) {
     return (
         <Provider store={store}>
-            <div>
+            <div className="container">
                 <ConnectedRouter history={history}>
                     <Route path="/" component={App}/>
                 </ConnectedRouter>
-                <DevTools />
             </div>
         </Provider>
     );

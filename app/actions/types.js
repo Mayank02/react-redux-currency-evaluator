@@ -1,1 +1,4 @@
-export const FILTER = 'FILTER';
+export const THRESHOLD = 'THRESHOLD';
+export const CURRENCY = 'CURRENCY';
+export const SET_CURRENCY_DETAILS = 'SET_CURRENCY_DETAILS';
+export const EMPTY_TABLE = 'EMPTY_TABLE';

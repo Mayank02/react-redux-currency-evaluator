@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Login from './containers/Home';
-import home from './components/About';
+import Home from './containers/Home';
+import Login from './components/About';
 
 export default (
 	<Switch>
-		<Route exact path="/" component={Login} />
-		<Route path="/home" component={home} />
+		<Route exact path="/home" component={Login} />
+		<Route exact path="/" component={Home} />
 	</Switch>
 );
