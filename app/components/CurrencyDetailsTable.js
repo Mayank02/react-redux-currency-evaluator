@@ -18,7 +18,7 @@ const CurrencyDetailsTable = ({ currencyDetailsList, threshold }) => {
         noOfRows = 0;
         if (!isNaN(threshold) && highValue > parseFloat(threshold)) {
             tbodyRows.push(
-                <CurrencyDetailsRow key={index} data={row} />
+                <CurrencyDetailsRow key={`currency-table-${index * Math.random() * 10}}`} data={row} />
             );
             noOfRows ++;
         }

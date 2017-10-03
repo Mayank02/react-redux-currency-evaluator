@@ -7,7 +7,7 @@ import Routes from '../routes';
 const App = () =>
     <div className="content">
         <header className={header}>
-            <Link to="/">{constants.LOGIN}</Link>
+            <Link to="/login">{constants.LOGIN}</Link>
         </header>
         { Routes }
     </div>;

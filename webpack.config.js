@@ -55,18 +55,21 @@ module.exports = {
                 loader: 'json'
             },
             {
-                test: /\.scss$/,
-                loader: 'style!css?modules&localIdentName=[name]!sass'
-            },
-            {
                 test: /\.css$/,
                 use: [
-                    { loader: 'style-loader' },
-                    { loader: 'css-loader' }
+                    { loader: "style-loader" },
+                    { loader: "css-loader" }
                 ]
-            },
+            },{
+                test: /\.scss$/,
+                loaders: ['style-loader', 'css-loader', 'sass-loader']
+            },                
             { test: /\.woff(2)?(\?[a-z0-9#=&.]+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
             { test: /\.(ttf|eot|svg)(\?[a-z0-9#=&.]+)?$/, loader: 'file' }
         ]
+    },
+    node: {
+        net: 'empty',
+        dns: 'empty'
     }
 };

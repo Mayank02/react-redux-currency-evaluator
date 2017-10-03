@@ -5,8 +5,14 @@ import {Route} from 'react-router-dom';
 import {ConnectedRouter} from 'react-router-redux';
 
 import App from '../components/App';
+import * as types from '../utils/action-types';
 
 export default function Root({store, history}) {
+    const userAuthDetails = localStorage.getItem('authToken');
+    if(userAuthDetails) {
+        store.dispatch({ type: types.AUTH_USER });
+    }
+
     return (
         <Provider store={store}>
             <div className="container">

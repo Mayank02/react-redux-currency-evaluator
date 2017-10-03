@@ -1,6 +1,6 @@
 import { routerReducer as routing } from 'react-router-redux';
 import { combineReducers } from 'redux';
-import * as types from '../actions/types';
+import * as types from '../utils/action-types';
 
 const threshold = (state = '', action) => {
     switch (action.type) {
@@ -29,10 +29,49 @@ const currencyDetailsList = (state = [], action) => {
     }
 };
 
-const isEmptyTable = (state = true, action) => {
+const userDetails = (state = {}, action) => {
     switch (action.type) {
-        case types.EMPTY_TABLE:
-            return action.isEmptyTable;
+        case types.SET_USER_DETAILS:
+            return {
+                ...state,
+                userDetails: action.userDetails
+            };
+        default:
+            return state;
+    }
+};
+
+const errorMessage = (state = {}, action) => {
+    switch (action.type) {
+        case types.SET_VALIDATE_MESSAGE:
+            return {
+                ...state,
+                userDetails: null,
+                validationError: action.payload
+            };
+        case types.RESET_VALIDATE_MESSAGE:
+            return {
+                ...state,
+                userDetails: null,
+                validationError: null
+            };
+        default:
+            return state;
+    }
+};
+
+const authenticated = (state = {}, action) => {
+    switch (action.type) {
+        case types.AUTH_USER:
+            return {
+                ...state,
+                authenticated: true
+            };
+        case types.UNAUTH_USER:
+            return {
+                ...state,
+                authenticated: false
+            };
         default:
             return state;
     }
@@ -42,7 +81,9 @@ const rootReducer = combineReducers({
     threshold,
     currency,
     currencyDetailsList,
-    isEmptyTable,
+    userDetails,
+    errorMessage,
+    authenticated,
     routing
 });
 
