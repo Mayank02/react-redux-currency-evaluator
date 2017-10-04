@@ -1,19 +1,22 @@
 {
     "data": [
         {
-            "user_id": "1231231",
-            "userName": "Test_1",
-            "userEmail": "test1@test.com"
+            "id": "1231231",
+            "name": "Test_1",
+            "email": "test1@test.com",
+            "password": "test1"
         },
         {
-            "user_id": "123123231",
-            "userName": "Test_2",
-            "userEmail": "test2@test.com"
+            "id": "123123231",
+            "name": "Test_2",
+            "email": "test2@test.com",
+            "password": "test2"
         },
         {
-            "user_id": "123155231",
-            "userName": "Test_3",
-            "userEmail": "test3@test.com"
+            "id": "123155231",
+            "name": "Test_3",
+            "email": "test3@test.com",
+            "password": "test3"
         }
     ]
 }

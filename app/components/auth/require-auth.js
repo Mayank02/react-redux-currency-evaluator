@@ -25,7 +25,7 @@ export default function(ComposedComponent) {
     }
 
     Authentication.propTypes = {
-        authenticated: React.PropTypes.string
+        authenticated: React.PropTypes.object
     };
 
     function mapStateToProps(state) {

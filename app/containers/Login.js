@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { loginUser, resetValidationMessage } from '../actions';
 import classNames from 'classnames';
 import { bindActionCreators } from 'redux';
+import constants from '../utils/constant';
 
 class Login extends Component {
     constructor(props) {
@@ -39,25 +40,23 @@ class Login extends Component {
 
     render() {
         return (
-            <section className="main-container">
-                <section className="login-form-wrapper">
-                    <form className="login-form" onSubmit={ (event) => this.onUserLogin(event) }>
+            <section className="login">
+                <section className="login-form-wrapper col-md-8">
+                    <form className="login-form col-12" onSubmit={ (event) => this.onUserLogin(event) }>
                         <div className="getting-started">
-                            <h6>Enter your details below.</h6>
+                            <h5>{constants.ENTER_DETAILS}</h5>
                         </div>
-
-                        {
-                            this.renderAlertMessage()
-                        }
-
-                        <label htmlFor="email">email address</label>
-                        <input type="email" className="form-control form-control-lg" id="email" name="email" placeholder="name@domain.com" required autoFocus ref="email"/>
-
-                        <label htmlFor="password">password</label>
-                        <input type="password" className="form-control form-control-lg" id="password" name="password" placeholder="Enter your password" required ref="password"/>
-
+                        {this.renderAlertMessage()}
+                        <div className="form-element col-12">
+                            <label htmlFor="email">{constants.EMAIL}</label>
+                            <input type="email" className="form-control form-control-lg" id="email" name="email" placeholder="name@domain.com" required autoFocus ref="email"/>
+                        </div>
+                        <div className="form-element col-12">
+                            <label htmlFor="password">{constants.PASSWORD}</label>
+                            <input type="password" className="form-control form-control-lg" id="password" name="password" placeholder="Enter your password" required ref="password"/>
+                        </div>
                         <div className="buttons">
-                            <button className="btn btn-primary" type="submit">Sign in</button>
+                            <button className="btn btn-primary" type="submit">{constants.SIGN_IN}</button>
                         </div>
                     </form>
                 </section>

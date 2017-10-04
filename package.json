@@ -19,6 +19,7 @@
     "bootstrap": "^4.0.0-alpha.6",
     "dotenv-webpack": "^1.5.4",
     "file-loader": "^0.9.0",
+    "lodash": "^4.17.4",
     "prop-types": "^15.5.9",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",

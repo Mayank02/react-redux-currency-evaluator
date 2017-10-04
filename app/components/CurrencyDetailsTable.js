@@ -18,7 +18,7 @@ const CurrencyDetailsTable = ({ currencyDetailsList, threshold }) => {
         noOfRows = 0;
         if (!isNaN(threshold) && highValue > parseFloat(threshold)) {
             tbodyRows.push(
-                <CurrencyDetailsRow key={`currency-table-${index * Math.random() * 10}}`} data={row} />
+                <CurrencyDetailsRow key={index * Math.random() * 10} data={row} />
             );
             noOfRows ++;
         }
@@ -28,7 +28,7 @@ const CurrencyDetailsTable = ({ currencyDetailsList, threshold }) => {
         tbodyRows.push(<tr><td>{threshold ? constants.EMPTY_TABLE_MSG : constants.NO_THRESHOLD_MSG}</td></tr>);
     }
 
-    return <table><thead>{theadtBodyRows}</thead><tbody>{tbodyRows}</tbody></table>;
+    return <table className="table table-striped"><thead>{theadtBodyRows}</thead><tbody>{tbodyRows}</tbody></table>;
 };
 
 CurrencyDetailsTable.propTypes = {

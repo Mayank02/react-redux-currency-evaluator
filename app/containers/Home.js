@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { filterTable} from '../actions';
 import CurrencyDetailsTable from '../components/CurrencyDetailsTable';
-import { home } from '../styles/home.scss';
 import constants from '../utils/constant';
 import * as types from '../utils/action-types';
 
@@ -16,11 +15,14 @@ class Home extends Component {
 
     render() {
         return (
-            <div className={home}>
+            <div className="currency-wrapper">
+                <div className="page_header row col-md-12 col-sm-12 col-xs-12">
+                    <h4>{constants.CURRENCY_PAGE_HEADER}</h4>
+                </div>
                 <div className="filter row col-md-12 col-sm-12 col-xs-12">
-                    <div className="currency-list col-md-6 col-sm-6 col-xs-6">
-                    <label>{constants.SELECT_CURRENCY}</label>
-                        <select value={this.props.currency} ref={node => {selectedCurrency = node;}} onChange={() => this.props.onCurrencyChange(selectedCurrency.value)}>
+                    <div className="currency-list form-group col-md-8 col-sm-8 col-xs-8">
+                        <label className="col-6">{constants.SELECT_CURRENCY}</label>
+                        <select className="form-control col-6" value={this.props.currency} ref={node => {selectedCurrency = node;}} onChange={() => this.props.onCurrencyChange(selectedCurrency.value)}>
                             <option value="LSK">LISK(LSK)</option>
                             <option value="ETH">Etherium(ETH)</option>
                             <option value="XMR">Monero(XMR)</option>
@@ -28,19 +30,20 @@ class Home extends Component {
                             <option value="BCH">Bitcoin Cash(BCH)</option>
                         </select>
                     </div>
-                    <div className="threshold col-md-6 col-sm-6 col-xs-6">
-                        <label>{constants.ENTER_THRESHOLD}</label>
+                    <div className="threshold form-group col-md-4 col-sm-4 col-xs-4">
+                        <label className="col-12">{constants.ENTER_THRESHOLD}</label>
                         <input
+                        className="col-12 form-control"
                         value={this.props.threshold}
                         ref={node => {thresholdValue = node;}}
                         onChange={() => this.props.onFilter(thresholdValue.value)} />
                     </div>
                 </div>
-                <div className="filter row col-md-12 col-sm-12 col-xs-12">
+                <div className="currency-table row col-md-12 col-sm-12 col-xs-12">
                     {
                         this.props.currencyDetailsList.length ?
                         <CurrencyDetailsTable threshold={this.props.threshold} currencyDetailsList={this.props.currencyDetailsList}/> :
-                        <div>No Data </div>
+                        <div className="apply-filter-msg">{constants.APPLY_FILTER_MSG}</div>
                     }
                 </div>
             </div>

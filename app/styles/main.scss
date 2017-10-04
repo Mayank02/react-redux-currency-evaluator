@@ -1,6 +1,12 @@
 @import "~bootstrap/scss/bootstrap";
+@import "./Login.scss";
+@import "./Home.scss";
 
 body{
     font-family: 'Lato', sans-serif;
     font-weight: 400;
+    .content{
+        background: #E8E8E7;
+        min-height: 700px;
+    }
 }

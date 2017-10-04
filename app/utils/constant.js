@@ -1,7 +1,7 @@
 module.exports = {
     LOGOUT: 'Logout',
     LOGIN: 'Login',
-    TIME: 'time (5m interval)',
+    TIME: 'Time (5m interval)',
     HIGH: 'High',
     LOW: 'Low',
     VOLUME: 'Volume',
@@ -11,5 +11,11 @@ module.exports = {
     NO_THRESHOLD_MSG: 'Kindly enter threshold.',
     LOGIN_FAILED_MSG: 'Sign in failed. Please check your username and password.',
     PAGE_NOT_FOUND_MSG: 'I\'m sorry, the page you were looking for cannot be found!',
-    NOT_FOUND_CODE: '404 - Page Not Found'
+    NOT_FOUND_CODE: '404 - Page Not Found',
+    ENTER_DETAILS: 'Enter your details below.',
+    EMAIL: 'Email address',
+    PASSWORD: 'Password',
+    SIGN_IN: 'Sign in',
+    CURRENCY_PAGE_HEADER: 'Cryptocurrency Threshold Evaluator (past 24hrs)',
+    APPLY_FILTER_MSG: 'Please apply filter to see the result.'
 };
