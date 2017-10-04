@@ -1,8 +1,9 @@
 'use strict';
 
-var path = require('path');
-var webpack = require('webpack');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
     devtool: 'eval-source-map',
@@ -19,16 +20,18 @@ module.exports = {
         publicPath: '/'
     },
     plugins: [
+        new Dotenv(),
         new HtmlWebpackPlugin({
-          template: 'app/index.tpl.html',
-          inject: 'body',
-          filename: 'index.html'
+            template: 'app/index.tpl.html',
+            inject: 'body',
+            filename: 'index.html'
         }),
         new webpack.optimize.OccurenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin(),
         new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify('development')
+            'process.env.NODE_ENV': JSON.stringify('development'),
+            'process.env.API_URL': process.env.API_URL
         })
     ],
     eslint: {

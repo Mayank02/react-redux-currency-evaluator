@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { loginUser, resetValidationMessage } from '../actions';
 import classNames from 'classnames';
+import { bindActionCreators } from 'redux';
 
 class Login extends Component {
     constructor(props) {
@@ -10,7 +10,7 @@ class Login extends Component {
     }
 
     componentWillUnmount() {
-        this.props.resetValidationMessage();
+        this.props.actions.resetValidationMessage();
     }
 
     onUserLogin(event) {
@@ -20,11 +20,7 @@ class Login extends Component {
             email: refs.email.value,
             password: refs.password.value
         };
-        this.props.loginUser(credentials);
-    }
-
-    onChangeInput() {
-        this.props.resetValidationMessage();
+        this.props.actions.loginUser(credentials);
     }
 
     renderAlertMessage() {
@@ -46,13 +42,7 @@ class Login extends Component {
             <section className="main-container">
                 <section className="login-form-wrapper">
                     <form className="login-form" onSubmit={ (event) => this.onUserLogin(event) }>
-                        <div className="sign-in-info">
-                            <button className="btn btn-secondary" type="button" onClick={ () => this.onGettingStartedClick() }>get started</button>
-                            <span>Don't have an account?</span>
-                        </div>
-
                         <div className="getting-started">
-                            <h1>Sign in to Ezoro.</h1>
                             <h6>Enter your details below.</h6>
                         </div>
 
@@ -61,7 +51,7 @@ class Login extends Component {
                         }
 
                         <label htmlFor="email">email address</label>
-                        <input type="email" className="form-control form-control-lg" id="email" name="email" placeholder="name@company.com" required autoFocus ref="email"/>
+                        <input type="email" className="form-control form-control-lg" id="email" name="email" placeholder="name@domain.com" required autoFocus ref="email"/>
 
                         <label htmlFor="password">password</label>
                         <input type="password" className="form-control form-control-lg" id="password" name="password" placeholder="Enter your password" required ref="password"/>
@@ -80,8 +70,7 @@ Login.propTypes = {
     email: React.PropTypes.string,
     password: React.PropTypes.string,
     validationError: React.PropTypes.object,
-    loginUser: React.PropTypes.func,
-    resetValidationMessage: React.PropTypes.func
+    actions: React.PropTypes.object
 };
 
 Login.defaultProps = {
@@ -101,7 +90,7 @@ function mapDispatchToProps(dispatch) {
         actions: bindActionCreators({
             loginUser,
             resetValidationMessage
-        }, dispatch)
+        }, dispatch),
     };
 }
 

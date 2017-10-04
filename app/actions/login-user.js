@@ -1,18 +1,18 @@
 import 'whatwg-fetch';
+
 import createHistory from 'history/createBrowserHistory';
 import constants from '../utils/constant';
 import * as types from '../utils/action-types';
 
 const history = createHistory({ basename: '/', forceRefresh: true });
 const headers = new Headers({ 'Content-Type': 'application/json' });
-const API_URL = 'http://localhost:3000/api';
 
 export function loginUser(credentials) {
+    console.log(credentials);
     return (dispatch) => {
-        fetch(`${API_URL}/auth/login`, {
-            method: 'POST',
-            headers,
-            body: JSON.stringify(credentials),
+        fetch(`${process.env.API_URL}/auth/users.json`, {
+            method: 'GET',
+            headers
         }).then(response => response.json()).then((data) => {
             if(data.id) {
                 localStorage.setItem('authToken', data.id);

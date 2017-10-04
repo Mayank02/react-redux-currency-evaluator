@@ -1,11 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { configureStore, history } from './store/configureStore';
+import configureStore from './store/configureStore';
 import Root from './containers/Root';
+import createHistory from 'history/createBrowserHistory';
 
 import './styles/main.scss';
 
+export const history = createHistory();
 const store = configureStore();
 
 render(

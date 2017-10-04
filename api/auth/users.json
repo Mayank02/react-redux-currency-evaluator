@@ -1,0 +1,19 @@
+{
+    "data": [
+        {
+            "user_id": "1231231",
+            "userName": "Test_1",
+            "userEmail": "test1@test.com"
+        },
+        {
+            "user_id": "123123231",
+            "userName": "Test_2",
+            "userEmail": "test2@test.com"
+        },
+        {
+            "user_id": "123155231",
+            "userName": "Test_3",
+            "userEmail": "test3@test.com"
+        }
+    ]
+}
