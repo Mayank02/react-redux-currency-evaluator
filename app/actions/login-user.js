@@ -1,20 +1,20 @@
 import 'whatwg-fetch';
 import _ from 'lodash';
-import createHistory from 'history/createBrowserHistory';
+// import createHistory from 'history/createBrowserHistory';
 import constants from '../utils/constant';
 import * as types from '../utils/action-types';
 
-const history = createHistory({ basename: '/', forceRefresh: true });
+// const history = createHistory({ basename: '/', forceRefresh: false });
 const headers = new Headers({ 'Content-Type': 'application/json' });
 
-export function loginUser(credentials) {
+export function loginUser(credentials, history) {
     return (dispatch) => {
         fetch(`${process.env.API_URL}/auth/users.json`, {
             method: 'GET',
             headers
         }).then(response => response.json()).then((res) => {
             const loggedInUser = _.find(res.data, (user) => {
-                return (user.email === credentials.email);
+                return (user.email === credentials.email) && (user.password === credentials.password);
             });
 
             if(loggedInUser) {
@@ -34,6 +34,7 @@ export function loginUser(credentials) {
 export function logoutUser() {
     return (dispatch) => {
         localStorage.removeItem('authToken');
+        dispatch({ type: types.UNAUTH_USER});
         dispatch({ type: types.SET_USER_DETAILS });
         history.push('/');
     };

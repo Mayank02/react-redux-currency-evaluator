@@ -11,7 +11,7 @@ class Login extends Component {
     }
 
     componentWillUnmount() {
-        this.props.actions.resetValidationMessage();
+        // this.props.actions.resetValidationMessage();
     }
 
     onUserLogin(event) {
@@ -21,15 +21,15 @@ class Login extends Component {
             email: refs.email.value,
             password: refs.password.value
         };
-        this.props.actions.loginUser(credentials);
+        this.props.actions.loginUser(credentials, this.props.history);
     }
 
     renderAlertMessage() {
         let successMsg;
         let errorMsg;
 
-        if(this.props.validationError) {
-            errorMsg = this.props.validationError.message;
+        if(!this.props.authenticated.authenticated) {
+            errorMsg = this.props.errorMessage.validationError;
         }
 
         const alertMessage = errorMsg;
@@ -68,14 +68,16 @@ class Login extends Component {
 Login.propTypes = {
     email: React.PropTypes.string,
     password: React.PropTypes.string,
-    validationError: React.PropTypes.object,
+    errorMessage: React.PropTypes.object,
+    authenticated: React.PropTypes.object,
+    history: React.PropTypes.object,
     actions: React.PropTypes.object
 };
 
 Login.defaultProps = {
     email: '',
     password: '',
-    validationError: null
+    errorMessage: null
 };
 
 function mapStateToProps(state) {

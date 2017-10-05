@@ -3,12 +3,12 @@ import { Route, Switch } from 'react-router-dom';
 import Home from './containers/Home';
 import Login from './containers/Login';
 import PageNotFound from './components/page-not-found';
-import RequireAuth from './components/auth/require-auth';
+import Authentication from './components/auth/require-auth';
 
 export default (
 	<Switch>
-		<Route path="/" component={Home} />
-		<Route path="/home" component={RequireAuth(Login)} />
+		<Route exact path="/" component={Login} />
+		<Route exact path="/home" render={ () => Authentication(<Home />)}/>
 		<Route path="*" component={PageNotFound} />
 	</Switch>
 );

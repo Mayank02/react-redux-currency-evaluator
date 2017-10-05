@@ -1,38 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import {Redirect} from 'react-router';
 
-export default function(ComposedComponent) {
-    class Authentication extends Component {
-        static contextTypes = {
-            router: React.PropTypes.object
-        }
-
-        componentWillMount() {
-            if(!this.props.authenticated) {
-                this.context.router.push('/');
-            }
-        }
-
-        componentWillUpdate(nextProps) {
-            if(!nextProps.authenticated) {
-                this.context.router.push('/');
-            }
-        }
-
-        render() {
-            return <ComposedComponent {...this.props} />;
-        }
-    }
-
-    Authentication.propTypes = {
-        authenticated: React.PropTypes.object
-    };
-
-    function mapStateToProps(state) {
-        return {
-            ...state,
-        };
-    }
-
-    return connect(mapStateToProps)(Authentication);
+export default function Authentication(comp) {
+    const authToken = localStorage.getItem('authToken');
+    return authToken ? comp : <Redirect to="/"/>;
 }
