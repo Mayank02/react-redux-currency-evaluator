@@ -1,10 +1,7 @@
 import 'whatwg-fetch';
 import _ from 'lodash';
-// import createHistory from 'history/createBrowserHistory';
 import constants from '../utils/constant';
 import * as types from '../utils/action-types';
-
-// const history = createHistory({ basename: '/', forceRefresh: false });
 const headers = new Headers({ 'Content-Type': 'application/json' });
 
 export function loginUser(credentials, history) {
@@ -19,11 +16,13 @@ export function loginUser(credentials, history) {
 
             if(loggedInUser) {
                 localStorage.setItem('authToken', loggedInUser.id);
+                localStorage.setItem('userName', loggedInUser.name);
                 dispatch({ type: types.SET_USER_DETAILS, payload: loggedInUser });
                 dispatch({ type: types.AUTH_USER});
                 history.push('/home');
             }else {
                 localStorage.removeItem('authToken');
+                localStorage.removeItem('userName');
                 dispatch({ type: types.UNAUTH_USER});
                 dispatch({ type: types.SET_VALIDATE_MESSAGE, payload: constants.LOGIN_FAILED_MSG });
             }
@@ -31,9 +30,10 @@ export function loginUser(credentials, history) {
     };
 }
 
-export function logoutUser() {
+export function logoutUser(history) {
     return (dispatch) => {
         localStorage.removeItem('authToken');
+        localStorage.removeItem('userName');
         dispatch({ type: types.UNAUTH_USER});
         dispatch({ type: types.SET_USER_DETAILS });
         history.push('/');

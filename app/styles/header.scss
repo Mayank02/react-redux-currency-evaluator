@@ -1,7 +1,21 @@
 .header {
-	margin-top: 20px;
-
-	a {
-		padding: 5px 10px 5px 0;
-	}
+    text-align: right;
+    display: none;
+    border-bottom: 1px solid #8a8a8a;
+    box-shadow: 0px 1px 0px #888888;
+    &.show-header {
+        display: inherit;
+    }
+    /* Custom, iPhone Retina */
+    @media only screen and (min-width: 320px) {
+        & {
+            padding: 3% 0%;
+        }
+    }
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width: 992px) {
+        & {
+            padding: 3% 6%;
+        }
+    }
 }

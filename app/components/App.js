@@ -1,11 +1,10 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-// import { header } from '../styles/header.scss';
-// import constants from '../utils/constant';
 import Routes from '../routes';
+import Header from '../components/Header';
 
 const App = () =>
     <div className="content">
+        <Header />
         { Routes }
     </div>;
 

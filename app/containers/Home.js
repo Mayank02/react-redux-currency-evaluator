@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { filterTable} from '../actions';
 import CurrencyDetailsTable from '../components/CurrencyDetailsTable';
 import constants from '../utils/constant';
+import { bindActionCreators } from 'redux';
 import * as types from '../utils/action-types';
 
 let thresholdValue;
@@ -13,6 +14,10 @@ class Home extends Component {
         super(props);
     }
 
+    onCurrencyChange(currency) {
+        this.props.actions.filterTable(currency);
+    }
+
     render() {
         return (
             <div className="currency-wrapper">
@@ -21,8 +26,8 @@ class Home extends Component {
                 </div>
                 <div className="filter row col-md-12 col-sm-12 col-xs-12">
                     <div className="currency-list form-group col-md-8 col-sm-8 col-xs-8">
-                        <label className="col-6">{constants.SELECT_CURRENCY}</label>
-                        <select className="form-control col-6" value={this.props.currency} ref={node => {selectedCurrency = node;}} onChange={() => this.props.onCurrencyChange(selectedCurrency.value)}>
+                        <label className="col-md-6 col-sm-12 col-xs-12">{constants.SELECT_CURRENCY}</label>
+                        <select className="form-control col-md-6 col-sm-12 col-xs-12" value={this.props.currency} ref={node => {selectedCurrency = node;}} onChange={() => this.onCurrencyChange(selectedCurrency.value)}>
                             <option value="LSK">LISK(LSK)</option>
                             <option value="ETH">Etherium(ETH)</option>
                             <option value="XMR">Monero(XMR)</option>
@@ -55,8 +60,8 @@ Home.propTypes = {
     threshold: React.PropTypes.string,
     currency: React.PropTypes.string,
     currencyDetailsList: React.PropTypes.array,
-    onFilter: React.PropTypes.func,
-    onCurrencyChange: React.PropTypes.func
+    actions: React.PropTypes.object,
+    onFilter: React.PropTypes.func
 };
 
 const mapStateToProps = (state) => {
@@ -67,14 +72,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        actions: bindActionCreators({
+            filterTable
+        }, dispatch),
         onFilter: threshold => {
             dispatch({type: types.THRESHOLD, threshold});
-        },
-        onCurrencyChange: currency => {
-            dispatch({type: types.CURRENCY, currency});
-            filterTable(currency, (data)=> {
-                dispatch({type: types.SET_CURRENCY_DETAILS, currencyDetailsList: data});
-            });
         }
     };
 };

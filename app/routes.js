@@ -8,6 +8,7 @@ import Authentication from './components/auth/require-auth';
 export default (
 	<Switch>
 		<Route exact path="/" component={Login} />
+		<Route exact path="/login" component={Login} />
 		<Route exact path="/home" render={ () => Authentication(<Home />)}/>
 		<Route path="*" component={PageNotFound} />
 	</Switch>

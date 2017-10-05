@@ -1,6 +1,7 @@
 module.exports = {
     LOGOUT: 'Logout',
     LOGIN: 'Login',
+    WELCOME: 'Welcome',
     TIME: 'Time (5m interval)',
     HIGH: 'High',
     LOW: 'Low',

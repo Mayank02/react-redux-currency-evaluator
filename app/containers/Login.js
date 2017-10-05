@@ -10,10 +10,6 @@ class Login extends Component {
         super(props);
     }
 
-    componentWillUnmount() {
-        // this.props.actions.resetValidationMessage();
-    }
-
     onUserLogin(event) {
         event.preventDefault();
         const refs = this.refs;
@@ -41,7 +37,7 @@ class Login extends Component {
     render() {
         return (
             <section className="login">
-                <section className="login-form-wrapper col-md-8">
+                <section className="login-form-wrapper col-8">
                     <form className="login-form col-12" onSubmit={ (event) => this.onUserLogin(event) }>
                         <div className="getting-started">
                             <h5>{constants.ENTER_DETAILS}</h5>
