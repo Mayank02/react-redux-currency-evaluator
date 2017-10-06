@@ -10,7 +10,6 @@ class Header extends Component {
     }
 
     onUserLogout() {
-        // event.preventDefault();
         this.props.actions.logoutUser();
     }
 
@@ -30,7 +29,6 @@ class Header extends Component {
 Header.propTypes = {
     userName: React.PropTypes.string,
     authenticated: React.PropTypes.object,
-    history: React.PropTypes.object,
     actions: React.PropTypes.object
 };
 

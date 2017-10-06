@@ -30,12 +30,11 @@ export function loginUser(credentials, history) {
     };
 }
 
-export function logoutUser(history) {
+export function logoutUser() {
     return (dispatch) => {
         localStorage.removeItem('authToken');
         localStorage.removeItem('userName');
         dispatch({ type: types.UNAUTH_USER});
         dispatch({ type: types.SET_USER_DETAILS });
-        history.push('/');
     };
 }
