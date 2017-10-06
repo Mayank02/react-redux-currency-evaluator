@@ -29,3 +29,5 @@ The app updates without the browser having to reload. You don't lose state!
 ```npm run build```
 
 This will build the app into the "dist" directory in the root of the project. It contains the index.html along with the minified assets, ready for production.
+
+#### For authontication purpose I have created api auth folder where user.json is the list of authonticated user list is available. If you can add more user to allow to use the application.
