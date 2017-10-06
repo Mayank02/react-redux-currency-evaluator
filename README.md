@@ -30,4 +30,9 @@ The app updates without the browser having to reload. You don't lose state!
 
 This will build the app into the "dist" directory in the root of the project. It contains the index.html along with the minified assets, ready for production.
 
-#### For authontication purpose I have created api auth folder where user.json is the list of authonticated user list is available. If you can add more user to allow to use the application.
+### Responsive
+
+I have used bootstrap to make this app responsive. It's web and tab responsive for mobile there is a bit issue with table as we have to design something else for mobile version.
+
+##### Authontication API
+For authontication purpose I have created mock api->auth folder where user.json is the list of authonticated user, you can add more user to allow to use the application.
