@@ -9,8 +9,8 @@ class Header extends Component {
         super(props);
     }
 
-    onUserLogout(event) {
-        event.preventDefault();
+    onUserLogout() {
+        // event.preventDefault();
         this.props.actions.logoutUser();
     }
 
@@ -20,7 +20,7 @@ class Header extends Component {
             <section className={'header col-12' + (showHeaderCls ? ' show-header' : '')}>
                 <div className="form-element col-12">
                     <span>{constants.WELCOME} : {this.props.userName} | </span>
-                    <a href="#" onClick={ (event) => this.onUserLogout(event) }>{constants.LOGOUT}</a>
+                    <a href="/" onClick={ (event) => this.onUserLogout(event) }>{constants.LOGOUT}</a>
                 </div>
             </section>
         );
